@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class App {
     private Scanner sc;
-    App (Scanner sc) {
+
+    App(Scanner sc) {
         this.sc = sc;
     }
+
     void run() {
         System.out.println("== 명언 앱 ==");
+        int count = 1;
 
         while (true) {
             System.out.print("명령) ");
@@ -20,8 +23,8 @@ public class App {
                 String content = sc.nextLine().trim();
                 System.out.print("작가 : ");
                 String author = sc.nextLine().trim();
-                System.out.println("명언이 등록되었습니다.");
-
+                System.out.println(count + "번 명언이 등록되었습니다.");
+                count++;
             }
         }
 
