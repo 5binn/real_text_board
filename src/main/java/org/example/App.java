@@ -1,40 +1,36 @@
 package org.example;
 
 import org.example.system.SystemController;
-import org.example.wiseSaying.Wise;
 import org.example.wiseSaying.WiseController;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class App {
-    private final Scanner sc;
 
-    SystemController systemController;
-    WiseController wiseController;
+    private final SystemController systemController;
+    private final WiseController wiseController;
 
-    App(Scanner sc) {
-        this.sc = sc;
-        systemController = new SystemController();
-        wiseController = new WiseController(sc);
+    public App() {
+        this.systemController = new SystemController();
+        this.wiseController = new WiseController();
     }
-
-    void run() {
+    public void run() {
 
         System.out.println("== 명언 앱 ==");
 
+
         while (true) {
             System.out.print("명령) ");
-            String command = sc.nextLine();
+            String command = Container.getSc().nextLine();
 
-            if (command.equals("종료")) {
-                systemController.exit();
-                break;
-            } else if (command.equals("등록")) {
-                wiseController.write();
-            } else if (command.equals("목록")) {
-                wiseController.list();
+            switch (command) {
+                case "종료":
+                    systemController.exit();
+                    return;
+                case "등록":
+                    wiseController.write();
+                    break;
+                case "목록":
+                    wiseController.list();
+                    break;
             }
         }
 
