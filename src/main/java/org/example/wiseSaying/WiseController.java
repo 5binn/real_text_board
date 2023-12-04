@@ -7,7 +7,7 @@ import java.util.List;
 
 public class WiseController {
     List<Wise> wiseList = new ArrayList<>();
-    int count = 1;
+    public int count = 1;
     public void write () {
         System.out.print("명언 : ");
         String content = Container.getSc().nextLine().trim();
@@ -23,5 +23,9 @@ public class WiseController {
         for (Wise ws : wiseList) {
             System.out.println(ws.getCount() + " / " + ws.getAuthor() + " / " + ws.getContent());
         }
+    }
+
+    public void delete() {
+
     }
 }
