@@ -1,11 +1,11 @@
-package org.example;
+package org.example.wiseSaying;
 
-public class WiseList {
+public class Wise {
     private int count;
     private String content;
     private String author;
 
-    WiseList(int count, String content, String author) {
+    public Wise(int count, String content, String author) {
         this.count = count;
         this.content = content;
         this.author = author;
