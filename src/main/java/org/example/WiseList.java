@@ -4,7 +4,6 @@ public class WiseList {
     private int count;
     private String content;
     private String author;
-
     WiseList (int count, String content, String author) {
         this.count = count;
         this.content = content;
