@@ -1,6 +1,7 @@
 package org.example.wiseSaying;
 
 import org.example.Container;
+import org.example.Request;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,23 @@ public class WiseController {
     public void list () {
         System.out.println("번호 / 작가 / 명언\n------------------");
         for (Wise ws : wiseList) {
-            System.out.println(ws.getCount() + " / " + ws.getAuthor() + " / " + ws.getContent());
+            System.out.println(ws.count() + " / " + ws.author() + " / " + ws.content());
         }
     }
+    public void delete(Request request) {
 
-    public void delete() {
+        int id = _getIntParam(request.getParams("id"));
 
+        System.out.println(id + "번 명언이 삭제되었습니다.");
+    }
+
+    private int _getIntParam (String id) {
+        int defaultValue = -1;
+        try {
+            return Integer.parseInt(id);
+        } catch (NumberFormatException e) {
+            System.out.println("id는 정수만 입력이 가능합니다.");
+            return defaultValue;
+        }
     }
 }
