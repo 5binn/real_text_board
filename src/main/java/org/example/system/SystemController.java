@@ -1,8 +1,10 @@
 package org.example.system;
 
+import org.example.Container;
+
 public class SystemController {
 
     public void exit() {
-        System.out.println("시스템을 종료합니다.");
+        return;
     }
 }
