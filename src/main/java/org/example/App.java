@@ -33,6 +33,8 @@ public class App {
                 case "삭제":
                     wiseController.delete(request);
                     break;
+                case "수정":
+                    wiseController.modify(request);
             }
         }
 

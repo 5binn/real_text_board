@@ -58,5 +58,23 @@ public class WiseController {
         return null;
     }
 
+    public void modify(Request request) {
+        int id = _getIntParam(request.getParams("id"));
+        Wise ws = _getFindById(id);
+        if (ws == null) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+            return;
+        }
+        System.out.println("명언(기존) : " + ws.getContent());
+        System.out.print("명언 : ");
+        String content = Container.getSc().nextLine().trim();
+        ws.setContent(content);
+
+        System.out.println("작가(기존) : " + ws.getAuthor());
+        System.out.print("작가 : ");
+        String author = Container.getSc().nextLine().trim();
+        ws.setAuthor(author);
+
+    }
 
 }
