@@ -6,10 +6,12 @@ import org.example.wiseSaying.WiseController;
 public class App {
     private final SystemController systemController;
     private final WiseController wiseController;
+
     public App() {
         this.systemController = new SystemController();
         this.wiseController = new WiseController();
     }
+
     public void run() {
         System.out.println("== 명언 앱 ==");
 

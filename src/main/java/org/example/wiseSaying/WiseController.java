@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WiseController {
-    List<Wise> wiseList = new ArrayList<>();
-    public int count = 1;
+    private List<Wise> wiseList = new ArrayList<>();
+    private int count = 1;
 
     public void write() {
         System.out.print("명언 : ");
@@ -31,6 +31,10 @@ public class WiseController {
     public void delete(Request request) {
         int id = _getIntParam(request.getParams("id"));
         Wise ws = _getFindById(id);
+        if (ws == null) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+            return;
+        }
         wiseList.remove(ws);
         System.out.println(id + "번 명언이 삭제되었습니다.");
     }
