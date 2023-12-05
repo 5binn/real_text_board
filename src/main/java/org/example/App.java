@@ -17,6 +17,7 @@ public class App {
             System.out.print("명령) ");
             String command = Container.getSc().nextLine();
             Request request = new Request(command);
+
             switch (request.getActionCode()) {
                 case "종료":
                     systemController.exit();

@@ -9,7 +9,8 @@ import java.util.List;
 public class WiseController {
     List<Wise> wiseList = new ArrayList<>();
     public int count = 1;
-    public void write () {
+
+    public void write() {
         System.out.print("명언 : ");
         String content = Container.getSc().nextLine().trim();
         System.out.print("작가 : ");
@@ -19,20 +20,22 @@ public class WiseController {
         System.out.println(this.count + "번 명언이 등록되었습니다.");
         this.count++;
     }
-    public void list () {
+
+    public void list() {
         System.out.println("번호 / 작가 / 명언\n------------------");
         for (Wise ws : wiseList) {
-            System.out.println(ws.count() + " / " + ws.author() + " / " + ws.content());
+            System.out.println(ws.getCount() + " / " + ws.getAuthor() + " / " + ws.getContent());
         }
     }
+
     public void delete(Request request) {
-
         int id = _getIntParam(request.getParams("id"));
-
+        Wise ws = _getFindById(id);
+        wiseList.remove(ws);
         System.out.println(id + "번 명언이 삭제되었습니다.");
     }
 
-    private int _getIntParam (String id) {
+    private int _getIntParam(String id) {
         int defaultValue = -1;
         try {
             return Integer.parseInt(id);
@@ -41,4 +44,15 @@ public class WiseController {
             return defaultValue;
         }
     }
+
+    private Wise _getFindById(int id) {
+        for (int i = 0; i < wiseList.size(); i++) {
+            if (wiseList.get(i).getCount() == id) {
+                return wiseList.get(i);
+            }
+        }
+        return null;
+    }
+
+
 }
