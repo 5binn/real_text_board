@@ -7,18 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WiseController {
-    private List<Wise> wiseList = new ArrayList<>();
-    private int count = 1;
+    WiseService wiseService;
+    WiseController() {
+        wiseService = new WiseService();
+    }
+
 
     public void write() {
         System.out.print("명언 : ");
         String content = Container.getSc().nextLine().trim();
         System.out.print("작가 : ");
         String author = Container.getSc().nextLine().trim();
-        Wise wl = new Wise(count, content, author);
-        this.wiseList.add(wl);
-        System.out.println(this.count + "번 명언이 등록되었습니다.");
-        this.count++;
+
+        int count = wiseService.write(content,author);
+
+        System.out.println(count + "번 명언이 등록되었습니다.");
     }
 
     public void list() {
@@ -30,8 +33,8 @@ public class WiseController {
 
     public void delete(Request request) {
         int id = _getIntParam(request.getParams("id"));
-        Wise ws = _getFindById(id);
         if (id == -1) return;
+        Wise ws = _getFindById(id);
         if (ws == null) {
             System.out.println(id + "번 명언은 존재하지 않습니다.");
             return;
@@ -61,8 +64,8 @@ public class WiseController {
 
     public void modify(Request request) {
         int id = _getIntParam(request.getParams("id"));
-        Wise ws = _getFindById(id);
         if (id == -1) return;
+        Wise ws = _getFindById(id);
         if (ws == null) {
             System.out.println(id + "번 명언은 존재하지 않습니다.");
             return;
