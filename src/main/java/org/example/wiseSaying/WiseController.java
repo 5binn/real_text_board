@@ -31,6 +31,7 @@ public class WiseController {
     public void delete(Request request) {
         int id = _getIntParam(request.getParams("id"));
         Wise ws = _getFindById(id);
+        if (id == -1) return;
         if (ws == null) {
             System.out.println(id + "번 명언은 존재하지 않습니다.");
             return;
@@ -50,9 +51,9 @@ public class WiseController {
     }
 
     private Wise _getFindById(int id) {
-        for (int i = 0; i < wiseList.size(); i++) {
-            if (wiseList.get(i).getCount() == id) {
-                return wiseList.get(i);
+        for (Wise wise : wiseList) {
+            if (wise.getCount() == id) {
+                return wise;
             }
         }
         return null;
@@ -61,6 +62,7 @@ public class WiseController {
     public void modify(Request request) {
         int id = _getIntParam(request.getParams("id"));
         Wise ws = _getFindById(id);
+        if (id == -1) return;
         if (ws == null) {
             System.out.println(id + "번 명언은 존재하지 않습니다.");
             return;
@@ -74,6 +76,8 @@ public class WiseController {
         System.out.print("작가 : ");
         String author = Container.getSc().nextLine().trim();
         ws.setAuthor(author);
+
+        System.out.println(id + "번 명언을 수정하였습니다.");
 
     }
 

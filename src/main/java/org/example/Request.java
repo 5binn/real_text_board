@@ -18,7 +18,7 @@ public class Request {
 
         for (String param : paramsList) {
             String[] paramStr = param.split("=", 2);
-            if (paramStr.length == 1) return;
+            if (paramStr.length <= 1) return;
             this.params.put(paramStr[0], paramStr[1]);
         }
     }
